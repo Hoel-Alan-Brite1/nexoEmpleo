@@ -10,7 +10,9 @@ class CreateAdministrativosTable extends Migration
     {
         Schema::create('administrativos', function (Blueprint $table) {
             $table->id('idadministrativos');
-            $table->foreignId('usuario_idusuario')->constrained('usuarios')->onDelete('cascade');
+            $table->foreignId('usuario_idusuario')
+                  ->constrained('usuarios', 'idusuario') // Cambia 'id' a 'idusuario'
+                  ->onDelete('cascade');
         });
     }
 

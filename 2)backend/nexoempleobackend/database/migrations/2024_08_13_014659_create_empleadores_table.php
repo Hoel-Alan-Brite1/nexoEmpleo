@@ -14,8 +14,8 @@ class CreateEmpleadoresTable extends Migration
             $table->integer('nit');
             $table->string('razon_social', 100);
             $table->tinyInteger('validacion');
-            $table->foreignId('usuario_idusuario')->constrained('usuarios')->onDelete('cascade');
-            $table->foreignId('categorias_idcategorias')->constrained('categorias')->onDelete('cascade');
+            $table->foreignId('usuario_idusuario')->constrained('usuarios', 'idusuario')->onDelete('cascade');
+            $table->foreignId('categorias_idcategorias')->constrained('categorias', 'idcategorias')->onDelete('cascade');
         });
     }
 

@@ -1,23 +1,19 @@
 <?php
 
-namespace Database\Seeders;
-
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Usuario;
+use App\Models\Empleador;
+use App\Models\Trabajador;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
-    public function run(): void
+    public function run()
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Crear 10 usuarios con sus relaciones
+        Usuario::factory(10)
+            ->has(Empleador::factory()->count(1), 'empleador')
+            ->has(Trabajador::factory()->count(1), 'trabajador')
+            ->create();
     }
 }
+

@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,7 +20,9 @@ class CreateOfertasTable extends Migration
             $table->tinyInteger('estado');
             $table->date('fecha_creacion');
             $table->string('idusuario_mod', 45);
-            $table->foreignId('empleadores_idempleadores')->constrained('empleadores')->onDelete('cascade');
+            $table->foreignId('empleadores_idempleadores')
+                  ->constrained('empleadores', 'idempleadores') // Asegúrate de que esté apuntando a 'idempleadores'
+                  ->onDelete('cascade');
         });
     }
 
